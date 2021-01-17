@@ -1,4 +1,4 @@
-/*
+
 package ImageHoster.controller;
 
 import ImageHoster.model.Image;
@@ -192,47 +192,6 @@ public class ImageControllerTest {
 
 
     //This test checks the controller logic when non owner of the image sends the GET request to get the form to edit the image and checks whether the Model type object contains the desired attribute with desired value
-    @Test
-    public void editImageWithNonOwnerOfTheImage() throws Exception {
-        User user = new User();
-        UserProfile userProfile = new UserProfile();
-        userProfile.setId(1);
-        userProfile.setEmailAddress("a@gmail.com");
-        userProfile.setFullName("Abhi Mahajan");
-        userProfile.setMobileNumber("9876543210");
-        user.setProfile(userProfile);
-        user.setId(1);
-        user.setUsername("Abhi");
-        user.setPassword("password1@");
-
-        session = new MockHttpSession();
-        session.setAttribute("loggeduser", user);
-
-        User user1 = new User();
-        UserProfile userProfile1 = new UserProfile();
-        userProfile.setId(2);
-        userProfile.setEmailAddress("p@gmail.com");
-        userProfile.setFullName("Prerna");
-        userProfile.setMobileNumber("9876543210");
-        user.setProfile(userProfile1);
-        user.setId(2);
-        user.setUsername("Prerna");
-        user.setPassword("password1@@");
-
-        Image image = new Image();
-        image.setId(1);
-        image.setTitle("new");
-        image.setDescription("This image is for testing purpose");
-        image.setUser(user1);
-
-
-        Mockito.when(imageService.getImage(Mockito.anyInt())).thenReturn(image);
-
-        this.mockMvc.perform(get("/editImage")
-                .param("imageId", "1")
-                .session(session))
-                .andExpect(model().attribute("editError", "Only the owner of the image can edit the image"));
-    }
 
     //This test checks the controller logic when the owner of the image sends the DELETE request to delete the image and checks whether the logic returns the html file 'images.html'
     @Test
@@ -310,4 +269,3 @@ public class ImageControllerTest {
     }
 }
 
-*/
