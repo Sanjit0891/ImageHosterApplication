@@ -89,6 +89,7 @@ public class UserController {
         return "index";
     }
 
+    //  check if password is of desired strength or not
     private Boolean checkPassword(String password){
         Pattern pattern= Pattern.compile("(?=.*[a-z])(?=.*[0-9])(?=.*[^a-z0-9])", Pattern.CASE_INSENSITIVE);
         Matcher match = pattern.matcher(password);
